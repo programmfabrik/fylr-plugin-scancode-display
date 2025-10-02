@@ -18,7 +18,7 @@ class ez5.Barcode extends CUI.DOMElement
                 check: String
             download:
                 check: Boolean
-				default: false
+                default: false
 
     constructor: (opts) ->
         super(opts)
