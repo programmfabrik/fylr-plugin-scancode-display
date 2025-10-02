@@ -1,5 +1,5 @@
 ZIP_NAME ?= "ScancodeDisplay.zip"
-PLUGIN_NAME = easydb-barcode-display
+PLUGIN_NAME = fylr-scancode-display
 
 COFFEE_FILES = \
 	Scancode.coffee \
