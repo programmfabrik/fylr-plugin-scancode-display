@@ -1,30 +1,30 @@
-.cui-barcode {
+.cui-scancode {
 	 display: flex;
 	 flex-direction: column;
 	 gap: calc(var(--toolbar-padding, 10px) * 2);
 }
- .cui-barcode .cui-barcode-ratio {
+ .cui-scancode .cui-scancode-ratio {
 	 line-height: 1;
 }
- .cui-barcode .cui-barcode-ratio img {
+ .cui-scancode .cui-scancode-ratio img {
 	 max-width: 100%;
 	 height: auto;
 }
- .cui-barcode .cui-barcode-ratio .cui-label {
+ .cui-scancode .cui-scancode-ratio .cui-label {
 	 background: var(--gray-200, #f4f5f5);
 	 padding: var(--toolbar-padding, 10px);
 	 min-height: 100px;
 }
- .cui-barcode .cui-barcode-ratio .cui-label .cui-label-content {
+ .cui-scancode .cui-scancode-ratio .cui-label .cui-label-content {
 	 max-width: 75%;
 }
- .cui-barcode.cui-barcode--square .cui-barcode-ratio {
+ .cui-scancode.cui-scancode--square .cui-scancode-ratio {
 	 height: auto;
 	 max-width: 200px;
 	 max-height: 200px;
 	 aspect-ratio: 1;
 }
- .cui-barcode.cui-barcode--square .cui-barcode-ratio img {
+ .cui-scancode.cui-scancode--square .cui-scancode-ratio img {
 	 width: 100%;
 	 height: 100%;
 	 object-fit: cover;
