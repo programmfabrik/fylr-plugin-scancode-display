@@ -1,0 +1,18 @@
+plugin:
+  name: easydb-barcode-display
+  version: 1.0
+  url: https://github.com/programmfabrik/fylr-plugin-scancode-display
+  l10n: l10n/scancode-display.csv
+  displayname:
+    en-US: "Anzeige von Scancodes (Barcode, QRCode)"
+    de-DE: "Display Scancodes (Barcode, QRCode"
+  server:
+    api-version:
+      require: 1
+  webfrontend:
+    url: scancode-display.js
+    css: scancode-display.css
+    dependencies:
+      - pdf-creator
+
+base_url_prefix: "webfrontend"

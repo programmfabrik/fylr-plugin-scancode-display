@@ -1,0 +1,31 @@
+key,de-DE,en-US,da-DK,fi-FI,sv-SE,fr-FR,it-IT,es-ES
+scancode.custom.splitter.options.scancode-type.hint,"Nur für Typ ""Barcode"". [Barcodetypen erklärt](https://github.com/lindell/JsBarcode/wiki#barcodes)","Only for type ""Barcode"". [Barcode types explained](https://github.com/lindell/JsBarcode/wiki#barcodes)","Only for type ""Barcode"". [Barcode types explained](https://github.com/lindell/JsBarcode/wiki#barcodes)","Vain tyypille ""Viivakoodi"". [Viivakoodityypit](https://github.com/lindell/JsBarcode/wiki#barcodes)","Endast för typen \""Streckkod\"". [Streckkodstyper förklaras](https://github.com/lindell/JsBarcode/wiki#barcodes)","Uniquement pour le type ""Code-barres"". [Types de codes-barres expliqués](https://github.com/lindell/JsBarcode/wiki#barcodes)",,
+scancode.custom.splitter.options.scancode-type.label,Scancode-Typ,Scancode type,Scancode type,Viivakoodin tyyppi,Streckkodstyp,Type de code-barres,,
+scancode.custom.splitter.options.code-type.scancode.text,Barcode,Barcode,Barcode,Viivakoodi,Streckkod,Barcode,,
+scancode.custom.splitter.options.code-type.label,Typ,Type,Type,Tyyppi,Typ,Taper,,
+scancode.custom.splitter.options.code-type.qrcode.text,QR code,QR code,QR code,QR-koodi,QR-kod,QR Code,,
+scancode.custom.splitter.options.expert_search_limit.label,Limit in expert search (number),Limit in expert search (number),Limit in expert search (number),Tarkennetun haun raja (numero),Begränsning i avancerad sökning (antal),Limite dans la recherche experte (nombre),,
+scancode.custom.splitter.options.field-selector.label,Feld,Field,Field,Kenttä,Fält,Champ,,
+scancode.custom.splitter.options.field-selector.placeholder,Auswählen eines Text- oder Zahlenfeldes,Select a text or number field,Select a text or number field,Valitse teksti- tai numerokenttä,Välj ett text- eller nummerfält,Sélectionnez un champ de texte ou de numéro,,
+scancode.label.empty-data.scancode,"Feld ""%(arg)s"" ausfüllen, um den Barcode zu generieren","Fill out field ""%(arg)s"" to generate barcode",Enter text to generate the barcode,Muodosta viivakoodi tekstistä,Skriv in text för att generera streckkoden,Saisir du texte pour générer le code-barres,,
+scancode.label.empty-data.qr_code,"Feld ""%(arg)s"" ausfüllen, um den QR-Code zu generieren","Fill out field ""%(arg)s"" to generate QR code",Enter text to generate the barcode,Muodosta viivakoodi tekstistä,Skriv in text för att generera streckkoden,Saisir du texte pour générer le code-barres,,
+scancode.label.qr-data-too-long,Daten für QR-Code sind zu lang,Data for QR code is too long,Data for QR code is too long,QR-koodin sisältö on liian pitkä,Data för QR-kod är för lång,Les données du code QR sont trop longues,,
+scancode.label.wrong-data.scancode,Keine gültigen Daten zur Generierung des Scancodes,No valid data to generate the scancode,No valid data to generate the scancode,Viivakoodin luonti ei onnistu,Inga giltiga data för att generera streckkoden,Aucune donnée valide pour générer le code-barres,,
+scancode.label.wrong-data.qr_code,Keine gültigen Daten zur Generierung des QR-Codes,No valid data to generate the QR code,No valid data to generate the barcode,Viivakoodin luonti ei onnistu,Inga giltiga data för att generera streckkoden,Aucune donnée valide pour générer le code-barres,,
+scancode.mask.splitter.name,Scancode,Scancode,Scancode,Viivakoodi,Streckkod,Scancode,,
+scancode.mask.splitter.option.barcode_type,Barcode-Typ: %(value)s,Barcode type: %(value)s,Barcode type: %(value)s,Viivakoodin tyyppi: %(value)s,Streckkodstyp: %(value)s,Type de code-barres : %(value)s,,
+scancode.mask.splitter.option.blockWidth,%(value)s breit,%(value)s width,%(value)s width,%(value)s leveys,%(value)s bredd,%(valeur)s largeur,,
+scancode.mask.splitter.option.code_type,Typ: %(value)s,Type: %(value)s,Type: %(value)s,Tyyppi: %(value)s,Typ: %(value)s,Tapez : %(valeur)s,,
+scancode.mask.splitter.option.field_name,Feld: %(value)s,Field: %(value)s,Field: %(value)s,Kenttä: %(value)s,Fält: %(value)s,Champ : %(valeur)s,,
+barcode.mask.splitter.title|text,Scancode,Scancode,Scancode,Viivakoodi,Streckkod,code à barre,,
+scancode.download|icon,download,download,,,,download,,
+scancode.download|text,Herunterladen...,Download...,,,,Téléchargement,,
+pdf-creator.node.barcode.display-name,Scancode,Scancode,Scancode,Viivakoodi,Streckkod,Scancode,,
+pdf-creator.settings.scancode.scancode-width|text,Scancode Breite,Scancode width,Scancode width,100%,Streckkodsbredd,Scancode largeur,,
+pdf-creator.settings.scancode.scancode-width|placeholder,100%,100%,100%,Viivakoodin leveys,100%,100%,,
+scancode.custom.splitter.options.code_prefix.label,Präfix,Prefix,Prefix,Prefix,Prefix,Prefix,Prefix,Prefix
+scancode.custom.splitter.options.code_prefix.hint,Wird vor dem Wert eingefügt,Is inserted before value,Is inserted before value,Is inserted before value,Is inserted before value,Is inserted before value,Is inserted before value,
+scancode.custom.splitter.options.code_suffix.label,Suffix,Suffix,Suffix,Suffix,Suffix,Suffix,Suffix,Suffix
+scancode.custom.splitter.options.code_suffix.hint,Wird nach dem Wert eingefügt,Is inserted after value,Is inserted after value,Is inserted after value,Is inserted after value,Is inserted after value,Is inserted after value,
+scancode.custom.splitter.options.download.label,Downloadbutton,Downloadbutton,Downloadbutton,Downloadbutton,Downloadbutton,Downloadbutton,Downloadbutton,Downloadbutton
+scancode.custom.splitter.options.download.hint,Zeige Downloadbutton unter dem Code im Editor/Detail,Show downloadbutton below the code in editor/detail,Show downloadbutton below the code in editor/detail,Show downloadbutton below the code in editor/detail,Show downloadbutton below the code in editor/detail,Show downloadbutton below the code in editor/detail,Show downloadbutton below the code in editor/detail,Show downloadbutton below the code in editor/detail

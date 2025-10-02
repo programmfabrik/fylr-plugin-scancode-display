@@ -1,0 +1,32 @@
+.cui-barcode {
+	 display: flex;
+	 flex-direction: column;
+	 gap: calc(var(--toolbar-padding, 10px) * 2);
+}
+ .cui-barcode .cui-barcode-ratio {
+	 line-height: 1;
+}
+ .cui-barcode .cui-barcode-ratio img {
+	 max-width: 100%;
+	 height: auto;
+}
+ .cui-barcode .cui-barcode-ratio .cui-label {
+	 background: var(--gray-200, #f4f5f5);
+	 padding: var(--toolbar-padding, 10px);
+	 min-height: 100px;
+}
+ .cui-barcode .cui-barcode-ratio .cui-label .cui-label-content {
+	 max-width: 75%;
+}
+ .cui-barcode.cui-barcode--square .cui-barcode-ratio {
+	 height: auto;
+	 max-width: 200px;
+	 max-height: 200px;
+	 aspect-ratio: 1;
+}
+ .cui-barcode.cui-barcode--square .cui-barcode-ratio img {
+	 width: 100%;
+	 height: 100%;
+	 object-fit: cover;
+}
+ 
