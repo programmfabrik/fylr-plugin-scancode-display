@@ -1,4 +1,4 @@
-class ez5.BarcodeSearchExpertPlugin extends ez5.SearchExpertPlugin
+class ez5.ScancodeSearchExpertPlugin extends ez5.SearchExpertPlugin
 
 	beforeFieldAdded: (opts) ->
 		field = opts.field
@@ -31,4 +31,4 @@ class ez5.BarcodeSearchExpertPlugin extends ez5.SearchExpertPlugin
 		return
 
 ez5.session_ready ->
-	SearchExpertOptions.plugins.registerPlugin(ez5.BarcodeSearchExpertPlugin)
+	SearchExpertOptions.plugins.registerPlugin(ez5.ScancodeSearchExpertPlugin)

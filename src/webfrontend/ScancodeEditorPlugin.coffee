@@ -1,22 +1,22 @@
-class ez5.BarcodeEditorPlugin extends ez5.EditorPlugin
+class ez5.ScancodeEditorPlugin extends ez5.EditorPlugin
 	checkForm: (opts) ->
 		data = opts.resultObject.getData()[opts.resultObject.objecttype()]
 
-		findBarcodes = (_data) ->
+		findScancodes = (_data) ->
 			for key, value of _data
 				if CUI.util.isArray(value) # Nested values.
 					for _value in value
-						findBarcodes(_value)
+						findScancodes(_value)
 					continue
 
-				if not key.endsWith(":barcode") or value not instanceof ez5.Barcode
+				if not key.endsWith(":scancode") or value not instanceof ez5.Barcode
 					continue
 
-				_key = key.split(":barcode")[0]
+				_key = key.split(":scancode")[0]
 				value.render(_data[_key])
-		findBarcodes(data)
+		findScancodes(data)
 
 		return []
 
 ez5.session_ready ->
-	Editor.plugins.registerPlugin(ez5.BarcodeEditorPlugin)
+	Editor.plugins.registerPlugin(ez5.ScancodeEditorPlugin)

@@ -1,7 +1,7 @@
-class ez5.PdfCreator.Node.Barcode extends ez5.PdfCreator.Node
+class ez5.PdfCreator.Node.Scancode extends ez5.PdfCreator.Node
 
     @getName: ->
-        "barcode"
+        "scancode"
 
     __renderPdfContent: (opts) ->
         object = opts.object
@@ -13,12 +13,12 @@ class ez5.PdfCreator.Node.Barcode extends ez5.PdfCreator.Node
             return
 
         fieldNameSplit = data.field_name.split(".")
-        barcodeData = null
+        scancodeData = null
         getData = (_data, fieldNames) =>
             name = fieldNames[0]
             value = _data[name]
             if CUI.util.isString(value)
-                barcodeData = value
+                scancodeData = value
                 return
 
             fieldNames = fieldNames.slice(1)
@@ -30,43 +30,43 @@ class ez5.PdfCreator.Node.Barcode extends ez5.PdfCreator.Node
         fieldName = fieldNameSplit[0]
         if fieldName in ['_uuid', '_system_object_id', '_global_object_id']
             _data = opts.object
-            barcodeData = _data[fieldName]
+            scancodeData = _data[fieldName]
         if fieldNameSplit.length > 1
             if fieldNameSplit[1] == '_uuid'
-                barcodeData = opts.object._uuid  
+                scancodeData = opts.object._uuid  
 
         # add prefix and suffix if given
         if @.opts?.data?.code_prefix
-            barcodeData = @.opts.data.code_prefix + barcodeData
+            scancodeData = @.opts.data.code_prefix + scancodeData
         if @.opts?.data?.code_suffix
-            barcodeData = barcodeData + @.opts.data.code_suffix
+            scancodeData = scancodeData + @.opts.data.code_suffix
 
-        if not barcodeData
+        if not scancodeData
             return
 
-        barcode = new ez5.Barcode
+        scancode = new ez5.Scancode
             mode: "pdf"
             type: data.code_type
-            barcode_type: data.barcode_type
+            scancode_type: data.scancode_type
             download: false
 
-        barcode.render(barcodeData)
+        scancode.render(scancodeData)
 
-        barcodeWidth = data.barcode_width or "100%"
-        img = CUI.dom.findElement(barcode.DOM, "img")
-        CUI.dom.setStyle(img, width: barcodeWidth)
+        scancodeWidth = data.scancode_width or "100%"
+        img = CUI.dom.findElement(scancode.DOM, "img")
+        CUI.dom.setStyle(img, width: scancodeWidth)
         return img
 
     __getSettingsFields: ->
         idObjecttype = @__getIdObjecttype()
-        fields = ez5.BarcodeMaskSplitter.getBarcodeOptions(idObjecttype, false
+        fields = ez5.ScancodeMaskSplitter.getScancodeOptions(idObjecttype, false
             store_value: "fullname"
             filter: (field) ->
                 return not field.insideNested()
         )
         fields.push(
             type: CUI.Input
-            name: "barcode_width"
+            name: "scancode_width"
             form: label: $$("pdf-creator.settings.scancode.scancode-width|text")
             placeholder: $$("pdf-creator.settings.scancode.scancode-width|placeholder")
         )
@@ -75,4 +75,4 @@ class ez5.PdfCreator.Node.Barcode extends ez5.PdfCreator.Node
     __getStyleSettings: ->
         return ["class-name", "background", "width", "height", "border", "position-absolute", "display", "top", "left", "right", "bottom", "margin-top", "margin-left", "margin-right", "margin-bottom", "padding-top", "padding-left", "padding-right", "padding-bottom"]
 
-ez5.PdfCreator.plugins.registerPlugin(ez5.PdfCreator.Node.Barcode)
+ez5.PdfCreator.plugins.registerPlugin(ez5.PdfCreator.Node.Scancode)

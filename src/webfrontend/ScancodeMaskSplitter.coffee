@@ -1,4 +1,4 @@
-class ez5.BarcodeMaskSplitter extends CustomMaskSplitter
+class ez5.ScancodeMaskSplitter extends CustomMaskSplitter
 
     isSimpleSplit: ->
         return true
@@ -13,7 +13,7 @@ class ez5.BarcodeMaskSplitter extends CustomMaskSplitter
                 if not @father.children.some((_field) => _field.getData().field_name == field.name())
                     return false
                 return true
-        fields = ez5.BarcodeMaskSplitter.getBarcodeOptions(@maskEditor.getMask().getTable().table_id, true, fieldSelectorOpts)
+        fields = ez5.ScancodeMaskSplitter.getScancodeOptions(@maskEditor.getMask().getTable().table_id, true, fieldSelectorOpts)
         fields.push
             type: CUI.NumberInput
             form: label: $$("scancode.custom.splitter.options.expert_search_limit.label")
@@ -21,15 +21,15 @@ class ez5.BarcodeMaskSplitter extends CustomMaskSplitter
             decimals: 0
         return fields
 
-    @getBarcodeOptions: (idObjecttype, showDownloadOptions, fieldSelectorOptions = {}) ->
-        disableEnableBarcodeType = (field) ->
+    @getScancodeOptions: (idObjecttype, showDownloadOptions, fieldSelectorOptions = {}) ->
+        disableEnableScancodeType = (field) ->
             form = field.getForm()
             data = form.getData()
-            barcodeTypeField = form.getFieldsByName("barcode_type")[0]
-            if data.code_type == ez5.Barcode.TYPE_BAR
-                barcodeTypeField.enable()
+            scancodeTypeField = form.getFieldsByName("scancode_type")[0]
+            if data.code_type == ez5.Scancode.TYPE_BAR
+                scancodeTypeField.enable()
             else
-                barcodeTypeField.disable()
+                scancodeTypeField.disable()
             return
 
         fieldSelectorFilter = fieldSelectorOptions.filter
@@ -67,25 +67,25 @@ class ez5.BarcodeMaskSplitter extends CustomMaskSplitter
             form: label: $$("scancode.custom.splitter.options.code-type.label")
             options: [
                 text: $$("scancode.custom.splitter.options.code-type.scancode.text")
-                value: ez5.Barcode.TYPE_BAR
+                value: ez5.Scancode.TYPE_BAR
             ,
                 text: $$("scancode.custom.splitter.options.code-type.qrcode.text")
-                value: ez5.Barcode.TYPE_QR
+                value: ez5.Scancode.TYPE_QR
             ]
             onDataChanged: (_, field) ->
-                disableEnableBarcodeType(field)
+                disableEnableScancodeType(field)
         ,
             type: CUI.Select
-            name: "barcode_type"
+            name: "scancode_type"
             form:
                 label: $$("scancode.custom.splitter.options.scancode-type.label")
                 hint: $$("scancode.custom.splitter.options.scancode-type.hint")
             onRender: (field) ->
-                disableEnableBarcodeType(field)
+                disableEnableScancodeType(field)
             options: ->
                 options = []
                 # Barcodes available https://github.com/lindell/JsBarcode/wiki#barcodes
-                for option in [ez5.Barcode.DEFAULT_BARCODE_TYPE, "CODE39", "ITF14", "MSI", "pharmacode", "codabar", "EAN13", "UPC", "EAN8", "EAN5", "EAN2"]
+                for option in [ez5.Scancode.DEFAULT_BARCODE_TYPE, "CODE39", "ITF14", "MSI", "pharmacode", "codabar", "EAN13", "UPC", "EAN8", "EAN5", "EAN2"]
                     options.push(value: option)
                 return options
         ,
@@ -134,12 +134,12 @@ class ez5.BarcodeMaskSplitter extends CustomMaskSplitter
 
         localizedDisplayName = _data["#{fieldName}:rendered"]?.getField().fullNameLocalized();
 
-        barcode = new ez5.Barcode
+        scancode = new ez5.Scancode
             type: @getDataOptions().code_type
-            barcode_type: @getDataOptions().barcode_type
+            scancode_type: @getDataOptions().scancode_type
             mode: opts.mode
             download: @getDataOptions().allow_download
-        barcode.render(data, {
+        scancode.render(data, {
             displayName: localizedDisplayName,
             fieldName: fieldName,
             objectType: opts.top_level_data._objecttype,
@@ -155,4 +155,4 @@ class ez5.BarcodeMaskSplitter extends CustomMaskSplitter
     isEnabledForNested: ->
         return true
 
-MaskSplitter.plugins.registerPlugin(ez5.BarcodeMaskSplitter)
+MaskSplitter.plugins.registerPlugin(ez5.ScancodeMaskSplitter)
