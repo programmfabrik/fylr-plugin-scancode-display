@@ -1,4 +1,4 @@
-# easydb-barcode-display
+# fylr-barcode-display
 
 Custom Mask Splitter for **fylr** to output scancodes based on data of another field in the record. Various barcode formats and QR codes are available. This plugin can be used in datamodel-masks and also in the pdfcreator.
 
