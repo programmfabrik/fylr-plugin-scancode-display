@@ -18,7 +18,7 @@ class ez5.ScancodeSearchExpertPlugin extends ez5.SearchExpertPlugin
 			return
 
 		for _field in fields
-			if _field not instanceof ez5.BarcodeMaskSplitter
+			if _field not instanceof ez5.ScancodeMaskSplitter
 				continue
 
 			dataOptions = _field.getDataOptions()

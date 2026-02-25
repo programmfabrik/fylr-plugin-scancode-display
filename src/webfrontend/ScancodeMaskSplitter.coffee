@@ -115,6 +115,7 @@ class ez5.ScancodeMaskSplitter extends CustomMaskSplitter
         return fields
 
     renderField: (opts) ->
+
         fieldName = @getDataOptions().field_name
         if not fieldName # Not configured.
             return
