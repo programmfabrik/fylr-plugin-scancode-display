@@ -13,6 +13,6 @@ plugin:
     url: scancode-display.js
     css: scancode-display.css
     dependencies:
-      - pdf-creator
+      - fylr-plugin-pdf-creator
 
 base_url_prefix: "webfrontend"
