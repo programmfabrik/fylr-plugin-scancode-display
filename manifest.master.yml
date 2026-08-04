@@ -8,7 +8,7 @@ plugin:
     de-DE: "Display Scancodes (Barcode, QRCode"
   info:
     de-DE: |
-      Ein Custom Mask Splitter für [fylr](https://documentation.fylr.cloud/docs), der aus den Daten eines anderen Feldes im Datensatz Scancodes erzeugt. Unterstützt werden verschiedene Barcode-Formate sowie QR-Codes, sowohl in Datenmodell-Masken als auch im PDF-Creator.
+      Ein Custom Mask Splitter für [fylr](https://docs.fylr.io/), der aus den Daten eines anderen Feldes im Datensatz Scancodes erzeugt. Unterstützt werden verschiedene Barcode-Formate sowie QR-Codes, sowohl in Datenmodell-Masken als auch im PDF-Creator.
 
       - Auswahl zwischen Barcode oder QR-Code und dem konkreten Barcode-Typ
       - Präfix und Suffix um den codierten Wert
@@ -17,7 +17,7 @@ plugin:
 
       Setzt das Plugin [fylr PDF Creator](https://github.com/programmfabrik/fylr-plugin-pdf-creator) voraus.
     en-US: |
-      A Custom Mask Splitter for [fylr](https://documentation.fylr.cloud/docs) that renders scancodes from the data of another field in the record. It supports various barcode formats and QR codes, and works both in data-model masks and in the PDF creator.
+      A Custom Mask Splitter for [fylr](https://docs.fylr.io/) that renders scancodes from the data of another field in the record. It supports various barcode formats and QR codes, and works both in data-model masks and in the PDF creator.
 
       - Choose barcode or QR code, and the specific barcode type
       - Add a prefix and suffix around the encoded value
