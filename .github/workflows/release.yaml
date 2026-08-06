@@ -38,10 +38,14 @@ jobs:
         run: make zip
         env:
           RELEASE_TAG: ${{ github.event.release.tag_name }}
-          ZIP_NAME: ${{ github.event.repository.name }}.zip
+          # NOT the repository name: the marketplace catalog and the fylr
+          # disk -> url plugin migration both point at
+          # releases/latest/download/ScancodeDisplay.zip, so the asset has to
+          # keep that name
+          ZIP_NAME: ScancodeDisplay.zip
 
       - name: Attach plugin zip to the release
         uses: softprops/action-gh-release@v3
         with:
           files: |
-            build/${{ github.event.repository.name }}.zip
+            build/ScancodeDisplay.zip
