@@ -39,19 +39,6 @@ jobs:
         env:
           RELEASE_TAG: ${{ github.event.release.tag_name }}
 
-      # Compatibility copies, NOT a second build. fylr updates a url plugin by
-      # re-fetching the url it stored at install time (internal/pluginupdate:
-      # UpdatePerPolicy fetches *p.URL), not by re-reading the marketplace
-      # catalog. Instances that installed this plugin before the asset was
-      # renamed hold ScancodeDisplay.zip, and briefly fylr-scancode-display.zip,
-      # in their plugin row -- dropping those names would break their updates
-      # for good, silently. They stay until we can show nobody points at them.
-      - name: Publish the historical asset names as aliases
-        run: |
-          cd build
-          cp fylr-plugin-scancode-display.zip ScancodeDisplay.zip
-          cp fylr-plugin-scancode-display.zip fylr-scancode-display.zip
-
       - name: Attach plugin zip to the release
         uses: softprops/action-gh-release@v3
         with:

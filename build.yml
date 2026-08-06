@@ -25,3 +25,14 @@ webfrontend:
     - webfrontend/scancode-display.css
 
 # no loca section: the l10n CSV has no Google Sheets master yet
+
+# Historical asset names, still published beside fylr-plugin-scancode-display.zip.
+# fylr updates a url plugin by re-fetching the url it stored at install time, so
+# an instance that installed while the asset was called ScancodeDisplay.zip holds
+# that url forever — dropping the name would break its updates silently.
+# fylr-scancode-display.zip was the published name for about an hour on
+# 2026-08-06 and is kept for the same reason.
+release:
+  zip_aliases:
+    - ScancodeDisplay.zip
+    - fylr-scancode-display.zip
