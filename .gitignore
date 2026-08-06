@@ -1,0 +1,8 @@
+/build
+build-info.json
+*.coffee.js
+.DS_Store
+*.swp
+*~
+.idea
+.vscode/

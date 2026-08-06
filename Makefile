@@ -1,53 +1,39 @@
-ZIP_NAME ?= "ScancodeDisplay.zip"
-PLUGIN_NAME = fylr-scancode-display
+# fylr plugins are built by fylr-build-plugin, the build driver that knows how
+# a fylr plugin is put together (compile, assemble build/, zip, loca). This
+# Makefile is a thin shim for muscle memory — all logic lives in the tool.
+# @latest always resolves the tool's newest release, so plugins pick up fixes
+# without being touched.
+#
+# Tools needed:
+#   go       runs fylr-build-plugin — https://go.dev/dl/
+#   coffee   CoffeeScript 1.x:  npm install -g coffeescript@1.12.7
 
-COFFEE_FILES = \
-	Scancode.coffee \
-	ScancodeEditorPlugin.coffee \
-	ScancodeMaskSplitter.coffee \
-	ScancodeSearchExpertPlugin.coffee \
-	ScancodeNode.coffee
+FYLR_BUILD_PLUGIN ?= go run github.com/programmfabrik/fylr-build-plugin@latest
 
-JS_FILES = \
-	JsBarcode.all.min.js \
-	qrcode.min.js
+# The tool itself reads NO environment variables — everything is passed as
+# flags. The release workflow's RELEASE_TAG / ZIP_NAME env is translated into
+# flags right here.
+RELEASE_FLAGS = $(if $(RELEASE_TAG),-release "$(RELEASE_TAG)")
+ZIP_FLAGS = $(RELEASE_FLAGS) $(if $(ZIP_NAME),-out "$(ZIP_NAME)")
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-all: build zip ## build and zip
+all: build ## build all
 
-build: clean buildinfojson ## build plugin
-	mkdir -p build
-	mkdir -p build/$(PLUGIN_NAME)/webfrontend
-	mkdir -p build/$(PLUGIN_NAME)/l10n
-	mkdir -p src/tmp
+build: ## build the plugin into build/<name>/ — loadable by fylr via plugin.paths
+	$(FYLR_BUILD_PLUGIN) build $(RELEASE_FLAGS)
 
-	cp src/webfrontend/*.coffee src/tmp
-	cd src/tmp && coffee -b --compile ${COFFEE_FILES}
+zip: ## build the release zip
+	$(FYLR_BUILD_PLUGIN) zip $(ZIP_FLAGS)
 
-	cat src/thirdparty/jsbarcode/JsBarcode.all.min.js src/thirdparty/qrcode/qrcode.min.js src/tmp/*.js > build/$(PLUGIN_NAME)/webfrontend/scancode-display.js
+loca: ## pull the loca CSV from its Google Sheets master (build.yml)
+	$(FYLR_BUILD_PLUGIN) loca
 
-	rm -rf src/tmp
+check: ## validate the build tree against the manifest
+	$(FYLR_BUILD_PLUGIN) check
 
-	cp l10n/scancodeDisplay.csv build/$(PLUGIN_NAME)/l10n/scancode-display.csv
-	cp src/webfrontend/css/scancodeDisplay.css build/$(PLUGIN_NAME)/webfrontend/scancode-display.css
-	cp manifest.master.yml build/$(PLUGIN_NAME)/manifest.yml
+clean: ## clean build files
+	$(FYLR_BUILD_PLUGIN) clean
 
-clean: ## clean
-	rm -rf build
-
-zip: build ## zip file
-	cd build && zip ${ZIP_NAME} -r $(PLUGIN_NAME)/
-
-buildinfojson:
-	repo=`git remote get-url origin | sed -e 's/\.git$$//' -e 's#.*[/\\]##'` ;\
-	rev=`git show --no-patch --format=%H` ;\
-	lastchanged=`git show --no-patch --format=%ad --date=format:%Y-%m-%dT%T%z` ;\
-	builddate=`date +"%Y-%m-%dT%T%z"` ;\
-	echo '{' > build-info.json ;\
-	echo '  "repository": "'$$repo'",' >> build-info.json ;\
-	echo '  "rev": "'$$rev'",' >> build-info.json ;\
-	echo '  "lastchanged": "'$$lastchanged'",' >> build-info.json ;\
-	echo '  "builddate": "'$$builddate'"' >> build-info.json ;\
-	echo '}' >> build-info.json
+.PHONY: help all build zip loca check clean

@@ -1,0 +1,27 @@
+# Build configuration for fylr-build-plugin. Delivered files are listed
+# EXPLICITLY here — nothing is derived from the manifest. The safety net is
+# "check" (runs with every build): it validates the assembled build folder
+# against every path manifest.yml references.
+
+server:
+  install:
+    - l10n
+
+webfrontend:
+  # the vendored barcode/QR libraries come FIRST, exactly as the old Makefile
+  # concatenated them: the compiled CoffeeScript calls into them at load time
+  js:
+    - webfrontend/thirdparty/jsbarcode/JsBarcode.all.min.js
+    - webfrontend/thirdparty/qrcode/qrcode.min.js
+  # compiled + appended to that same bundle, in this order, into
+  # plugin.webfrontend.url (webfrontend/scancode-display.js)
+  coffee1:
+    - webfrontend/Scancode.coffee
+    - webfrontend/ScancodeEditorPlugin.coffee
+    - webfrontend/ScancodeMaskSplitter.coffee
+    - webfrontend/ScancodeSearchExpertPlugin.coffee
+    - webfrontend/ScancodeNode.coffee
+  install:
+    - webfrontend/scancode-display.css
+
+# no loca section: the l10n CSV has no Google Sheets master yet
