@@ -1,11 +1,13 @@
-# fylr-barcode-display
+# fylr Scancode Display
 
 Custom Mask Splitter for **fylr** to output scancodes based on data of another field in the record. Various barcode formats and QR codes are available. This plugin can be used in datamodel-masks and also in the pdfcreator.
 
 ## installation
-The latest version of this plugin can be found [here](https://github.com/programmfabrik/fylr-plugin-scancode-display/releases/latest/download/ScancodeDisplay.zip).
+The latest version of this plugin can be found [here](https://github.com/programmfabrik/fylr-plugin-scancode-display/releases/latest/download/fylr-plugin-scancode-display.zip).
 
 The ZIP can be downloaded and installed using the plugin manager, or used directly (recommended).
+
+Older releases published the same plugin as `ScancodeDisplay.zip`. That name is still published beside the current one, so an instance that installed under it keeps updating — but new installs should use the url above.
 
 Github has an overview page to get a list of [all releases](https://github.com/programmfabrik/fylr-plugin-scancode-display/releases/).
 
