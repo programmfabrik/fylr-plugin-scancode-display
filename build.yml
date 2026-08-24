@@ -8,33 +8,20 @@ server:
     - l10n
 
 webfrontend:
-  # the vendored barcode/QR libraries come FIRST, exactly as the old Makefile
-  # concatenated them: the compiled CoffeeScript calls into them at load time
-  js:
-    - webfrontend/thirdparty/jsbarcode/JsBarcode.all.min.js
-    - webfrontend/thirdparty/qrcode/qrcode.min.js
-  # compiled + appended to that same bundle, in this order, into
-  # plugin.webfrontend.url (webfrontend/scancode-display.js)
-  coffee1:
-    - webfrontend/Scancode.coffee
-    - webfrontend/ScancodeEditorPlugin.coffee
-    - webfrontend/ScancodeMaskSplitter.coffee
-    - webfrontend/ScancodeSearchExpertPlugin.coffee
-    - webfrontend/ScancodeNode.coffee
+  # assembled into plugin.webfrontend.url, in this order:
+  # .coffee is compiled (CoffeeScript 1.x), .scss compiled,
+  # anything else taken verbatim
+  bundles:
+    - sources:
+        - webfrontend/Scancode.coffee
+        - webfrontend/ScancodeEditorPlugin.coffee
+        - webfrontend/ScancodeMaskSplitter.coffee
+        - webfrontend/ScancodeSearchExpertPlugin.coffee
+        - webfrontend/ScancodeNode.coffee
+        - webfrontend/thirdparty/jsbarcode/JsBarcode.all.min.js
+        - webfrontend/thirdparty/qrcode/qrcode.min.js
   install:
     - webfrontend/scancode-display.css
 
-# no loca section: the l10n CSV has no Google Sheets master yet
-
-# ScancodeDisplay.zip was this plugin's asset name for years, so instances hold
-# that url and it is still published beside the current one — fylr updates a url
-# plugin by re-fetching the url it stored at install time, and dropping the name
-# would break those updates silently.
-#
-# fylr-scancode-display.zip is deliberately NOT listed: it was the published
-# name for 69 minutes on 2026-08-06 (v1.0.6 -> v1.0.7), of which the marketplace
-# catalog advertised it for about 71, and an install would have had to fall
-# inside that window.
-build:
-  zip_aliases:
-    - ScancodeDisplay.zip
+zip_aliases:
+  - ScancodeDisplay.zip
