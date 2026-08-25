@@ -4,8 +4,8 @@ plugin:
   url: https://github.com/programmfabrik/fylr-plugin-scancode-display
   l10n: l10n/scancode-display.csv
   displayname:
-    en-US: "Anzeige von Scancodes (Barcode, QRCode)"
-    de-DE: "Display Scancodes (Barcode, QRCode"
+    en-US: "Display Scancodes (Barcode, QRCode)"
+    de-DE: "Anzeige von Scancodes (Barcode, QRCode)"
   info:
     de-DE: |
       Ein Custom Mask Splitter für [fylr](https://docs.fylr.io/), der aus den Daten eines anderen Feldes im Datensatz Scancodes erzeugt. Unterstützt werden verschiedene Barcode-Formate sowie QR-Codes, sowohl in Datenmodell-Masken als auch im PDF-Creator.
