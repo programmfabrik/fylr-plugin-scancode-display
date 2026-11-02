@@ -24,6 +24,7 @@ Available Options in the maskconfiguration and the pdfcreator are:
 * suffix
 * field whose data is used
 * show downloadbutton (only for mask, not for pdf)
+* limit in expert search (only for mask): a number N cuts the value searched in the source field through the expert search to its first N characters. Empty or 0 searches the whole value
 
 ## sources
 
