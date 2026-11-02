@@ -6,6 +6,10 @@ class ez5.ScancodeMaskSplitter extends CustomMaskSplitter
     renderAsField: ->
         return true
 
+    # The expert search renders the mask without a record, there is nothing to encode.
+    isVisible: (mode, opts) ->
+        return super(mode, opts) and mode != "expert"
+
     getOptions: ->
         fieldSelectorOpts =
             store_value: "name"
@@ -143,7 +147,7 @@ class ez5.ScancodeMaskSplitter extends CustomMaskSplitter
         scancode.render(data, {
             displayName: localizedDisplayName,
             fieldName: fieldName,
-            objectType: opts.top_level_data._objecttype,
+            objectType: opts.top_level_data?._objecttype,
         })
 
     hasContent: (opts) ->
